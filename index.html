@@ -1006,7 +1006,7 @@ async function loadFP(){if(loadingFP)return;const need=[...new Set(D.map(fk).fil
   await new Promise(r=>setTimeout(r,1300))}
  loadingFP=false;fpStatus()}
 const FNKEY="wgpbr-fpn-v1";let FPN={};try{FPN=JSON.parse(localStorage.getItem(FNKEY)||"{}")}catch(e){}
-const nk=s=>s.ot==="N"&&s.oid&&placed(s)?"N"+s.oid:null;
+const nk=s=>!fk(s)&&placed(s)&&s.sh!=="rect"?(s.oid?"N"+s.oid:"T"+s.nama):null;
 const saveFPN=()=>{try{localStorage.setItem(FNKEY,JSON.stringify(FPN))}catch(e){}};
 let loadingN=false;
 async function loadNodeShapes(){
